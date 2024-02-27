@@ -513,7 +513,7 @@ static bool IRAM_ATTR i2s_dma_rx_callback(gdma_channel_handle_t dma_chan, gdma_e
     esp_cache_msync((void *)finish_desc->buf, handle->dma.buf_size, ESP_CACHE_MSYNC_FLAG_INVALIDATE);
 #endif
     i2s_event_data_t evt = {
-        .data = &(finish_desc->buf),
+        .data = finish_desc->buf,
         .size = handle->dma.buf_size,
     };
     if (handle->callbacks.on_recv) {
